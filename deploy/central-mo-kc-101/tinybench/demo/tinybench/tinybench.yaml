@@ -19,8 +19,8 @@ spec:
     metadata:
       labels:
         app: tinybench
-        version: beta-2202-12-21
-        deploy: 22-02-12-21-13-33
+        version: beta-2202-12-22
+        deploy: 22-02-12-22-16-29
     spec:
       containers:
         - name: app
@@ -53,15 +53,15 @@ apiVersion: traefik.containo.us/v1alpha1
 kind: IngressRoute
 metadata:
   name: tinybench
-  namespace: tinybench
 spec:
   entryPoints:
     - websecure
   routes:
-    - match: Host(`central-mo-kc-101.cseretail.com`)
+    - match: Host(`central-mo-kc-101.cseretail.com`) && Path('/tinybench')
       kind: Rule
       services:
         - name: tinybench
+          namespace: tinybench
           kind: Service
           port: 8080
   tls:
