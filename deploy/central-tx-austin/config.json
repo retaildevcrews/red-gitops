@@ -1,6 +1,6 @@
 {
-  "region": "central",
-  "district": "central-tx-austin",
+  "environment": "demo",
   "zone": "central-tx-austin",
-  "environment": "demo"
+  "region": "central",
+  "district": "central-tx-austin"
 }

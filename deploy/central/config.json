@@ -1,5 +1,5 @@
 {
-  "region": "central",
+  "environment": "demo",
   "zone": "central",
-  "environment": "demo"
+  "region": "central"
 }

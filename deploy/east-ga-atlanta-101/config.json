@@ -1,7 +1,7 @@
 {
   "environment": "demo",
-  "region": "east",
   "zone": "east-ga-atlanta",
+  "region": "east",
   "district": "east-ga-atlanta",
   "store": "east-ga-atlanta-101",
   "domain": "east-ga-atlanta-101.cseretail.com"

@@ -1,6 +1,6 @@
 {
-  "region": "west",
-  "district": "west-wa-redmond",
+  "environment": "demo",
   "zone": "west-wa-redmond",
-  "environment": "demo"
+  "region": "west",
+  "district": "west-wa-redmond"
 }

@@ -1,6 +1,6 @@
 {
-  "region": "central",
-  "district": "central-mo-kc",
+  "environment": "demo",
   "zone": "central-mo-kc",
-  "environment": "demo"
+  "region": "central",
+  "district": "central-mo-kc"
 }

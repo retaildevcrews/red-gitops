@@ -1,5 +1,5 @@
 {
-  "region": "west",
+  "environment": "demo",
   "zone": "west",
-  "environment": "demo"
+  "region": "west"
 }

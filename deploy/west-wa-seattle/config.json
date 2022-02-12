@@ -1,6 +1,6 @@
 {
-  "region": "west",
-  "district": "west-wa-seattle",
+  "environment": "demo",
   "zone": "west-wa-seattle",
-  "environment": "demo"
+  "region": "west",
+  "district": "west-wa-seattle"
 }

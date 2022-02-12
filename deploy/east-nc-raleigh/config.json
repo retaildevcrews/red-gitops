@@ -1,6 +1,6 @@
 {
-  "region": "east",
-  "district": "east-nc-raleigh",
+  "environment": "demo",
   "zone": "east-nc-raleigh",
-  "environment": "demo"
+  "region": "east",
+  "district": "east-nc-raleigh"
 }

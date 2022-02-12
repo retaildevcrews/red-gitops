@@ -1,6 +1,6 @@
 {
-  "region": "east",
-  "district": "east-ga-atlanta",
+  "environment": "demo",
   "zone": "east-ga-atlanta",
-  "environment": "demo"
+  "region": "east",
+  "district": "east-ga-atlanta"
 }
