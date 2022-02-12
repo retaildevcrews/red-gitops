@@ -1,18 +1,12 @@
-# My new repo
+# Retail Edge Demo - GitOps Repo
 
 ![License](https://img.shields.io/badge/license-MIT-green.svg)
 
-> My new repo description ...
+> Retail Edge Demo - GitOps Repo
 
 ## Overview
 
-Add project overview ...
-
-### Engineering Docs
-
-- Team Working [Agreement](.github/WorkingAgreement.md)
-- Team [Engineering Practices](.github/EngineeringPractices.md)
-- CSE Engineering Fundamentals [Playbook](https://github.com/Microsoft/code-with-engineering-playbook)
+This is the GitOps (Flux) repo for the Retail Edge Demo
 
 ## How to file issues and get help  
 
