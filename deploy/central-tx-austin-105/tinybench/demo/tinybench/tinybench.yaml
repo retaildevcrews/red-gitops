@@ -19,8 +19,8 @@ spec:
     metadata:
       labels:
         app: tinybench
-        version: beta-2202-12-22
-        deploy: 22-02-12-22-27-38
+        version: beta-2202-12-23
+        deploy: 22-02-12-23-58-03
     spec:
       containers:
         - name: app
@@ -38,10 +38,9 @@ metadata:
   name: tinybench
   namespace: tinybench
 spec:
-  type: NodePort
+  type: ClusterIp
   ports:
     - port: 8080
-      nodePort: 30082
       targetPort: http
       protocol: TCP
       name: http
@@ -52,12 +51,12 @@ spec:
 apiVersion: traefik.containo.us/v1alpha1
 kind: IngressRoute
 metadata:
-  name: tinybench
+  name: tinybench-https
 spec:
   entryPoints:
     - websecure
   routes:
-    - match: Host(`central-tx-austin-105.cseretail.com`) && Path('/tinybench')
+    - match: Host(`central-tx-austin-105.cseretail.com`) && PathPrefix('/tinybench/')
       kind: Rule
       services:
         - name: tinybench
@@ -66,3 +65,20 @@ spec:
           port: 8080
   tls:
     secretName: ssl-cert
+
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: tinybench-http
+spec:
+  entryPoints:
+    - web
+  routes:
+    - match: Host(`central-tx-austin-105.cseretail.com`) && PathPrefix('/tinybench/')
+      kind: Rule
+      services:
+        - name: tinybench
+          namespace: tinybench
+          kind: Service
+          port: 8080
