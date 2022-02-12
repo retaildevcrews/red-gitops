@@ -19,8 +19,8 @@ spec:
     metadata:
       labels:
         app: tinybench
-        version: beta-2202-12-20
-        deploy: 22-02-12-20-56-55
+        version: beta-2202-12-21
+        deploy: 22-02-12-21-13-33
     spec:
       containers:
         - name: app
@@ -56,7 +56,7 @@ metadata:
   namespace: tinybench
 spec:
   entryPoints:
-    - web
+    - websecure
   routes:
     - match: Host(`east-nc-raleigh-101.cseretail.com`)
       kind: Rule
@@ -64,3 +64,5 @@ spec:
         - name: tinybench
           kind: Service
           port: 8080
+  tls:
+    secretName: ssl-cert
