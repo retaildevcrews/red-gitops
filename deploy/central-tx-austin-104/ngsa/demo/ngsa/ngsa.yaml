@@ -20,7 +20,7 @@ spec:
       labels:
         app: ngsa
         version: beta-2202-12-23
-        deploy: 22-02-12-23-51-38
+        deploy: 22-02-12-23-59-48
     spec:
       containers:
         - name: app
@@ -71,3 +71,22 @@ spec:
           namespace: ngsa
           kind: Service
           port: 8080
+
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: ngsa-https
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - match: Host(`central-tx-austin-104.cseretail.com`)
+      kind: Rule
+      services:
+        - name: ngsa
+          namespace: ngsa
+          kind: Service
+          port: 8080
+  tls:
+    secretName: ssl-cert
