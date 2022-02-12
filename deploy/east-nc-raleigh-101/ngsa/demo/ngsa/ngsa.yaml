@@ -19,8 +19,8 @@ spec:
     metadata:
       labels:
         app: ngsa
-        version: beta-0212-0933
-        deploy: 22-02-12-09-33-38
+        version: beta-0212-0936
+        deploy: 22-02-12-09-36-27
     spec:
       containers:
         - name: app
@@ -30,9 +30,9 @@ spec:
           - --in-memory
           - --prometheus
           - --zone
-          - central
+          - east-nc-raleigh
           - --region
-          - central
+          - east
           ports:
             - name: http
               containerPort: 8080
@@ -65,7 +65,7 @@ spec:
   entryPoints:
     - web
   routes:
-    - match: Host(`central`)
+    - match: Host(`east`)
       kind: Rule
       services:
         - name: ngsa
