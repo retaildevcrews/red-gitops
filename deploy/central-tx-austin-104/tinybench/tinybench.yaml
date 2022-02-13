@@ -52,6 +52,7 @@ apiVersion: traefik.containo.us/v1alpha1
 kind: IngressRoute
 metadata:
   name: tinybench-https
+  namespace: default
 spec:
   entryPoints:
     - websecure
@@ -71,6 +72,7 @@ apiVersion: traefik.containo.us/v1alpha1
 kind: IngressRoute
 metadata:
   name: tinybench-http
+  namespace: default
 spec:
   entryPoints:
     - web
