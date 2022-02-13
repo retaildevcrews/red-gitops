@@ -2,7 +2,7 @@
   "all": [ "central", "east", "west" ],
 
   "central": [ "central-tx-austin", "central-mo-kc" ],
-    "central-tx-austin": [ "central-tx-austin-101", "central-tx-austin-102", "central-tx-austin-103", "central-tx-austin-104", "central-tx-austin-105" ],
+    "central-tx-austin": [ "central-tx-austin-101", "central-tx-austin-102" ],
     "central-mo-kc": [ "central-mo-kc-101", "central-mo-kc-102" ],
 
   "east": [ "east-ga-atlanta", "east-nc-raleigh" ],
