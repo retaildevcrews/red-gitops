@@ -82,3 +82,4 @@ spec:
           namespace: tinybench
           kind: Service
           port: 8080
+
