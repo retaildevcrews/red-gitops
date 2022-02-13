@@ -38,7 +38,7 @@ metadata:
   name: tinybench
   namespace: tinybench
 spec:
-  type: ClusterIp
+  type: ClusterIP
   ports:
     - port: 8080
       targetPort: http
