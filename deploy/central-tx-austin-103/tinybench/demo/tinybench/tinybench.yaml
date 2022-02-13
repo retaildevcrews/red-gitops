@@ -19,8 +19,8 @@ spec:
     metadata:
       labels:
         app: tinybench
-        version: beta-2202-13-00
-        deploy: 22-02-13-00-49-21
+        version: beta-2202-13-02
+        deploy: 22-02-13-02-13-23
     spec:
       containers:
         - name: app
@@ -57,7 +57,7 @@ spec:
   entryPoints:
     - websecure
   routes:
-    - match: Host(`central-tx-austin-104.cseretail.com`) && PathPrefix(`/tinybench/`)
+    - match: Host(`central-tx-austin-103.cseretail.com`) && PathPrefix(`/tinybench/`)
       kind: Rule
       services:
         - name: tinybench
@@ -77,7 +77,7 @@ spec:
   entryPoints:
     - web
   routes:
-    - match: Host(`central-tx-austin-104.cseretail.com`) && PathPrefix(`/tinybench/`)
+    - match: Host(`central-tx-austin-103.cseretail.com`) && PathPrefix(`/tinybench/`)
       kind: Rule
       services:
         - name: tinybench
