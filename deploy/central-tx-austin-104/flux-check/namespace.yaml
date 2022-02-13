@@ -4,3 +4,4 @@ metadata:
   labels:
     name: flux-check
   name: flux-check
+
