@@ -65,7 +65,7 @@ spec:
   entryPoints:
     - web
   routes:
-    - match: Host(`central-tx-austin-105.cseretail.com`)
+    - match: Host(`central-tx-austin-104.cseretail.com`)
       kind: Rule
       services:
         - name: ngsa
@@ -83,7 +83,7 @@ spec:
   entryPoints:
     - websecure
   routes:
-    - match: Host(`central-tx-austin-105.cseretail.com`)
+    - match: Host(`central-tx-austin-104.cseretail.com`)
       kind: Rule
       services:
         - name: ngsa
