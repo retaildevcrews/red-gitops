@@ -57,7 +57,7 @@ spec:
   entryPoints:
     - websecure
   routes:
-    - match: Host(`central-tx-austin-102.cseretail.com`) && PathPrefix(`/tinybench/`)
+    - match: Host(`west-ca-sd-102.cseretail.com`) && PathPrefix(`/tinybench/`)
       kind: Rule
       services:
         - name: tinybench
@@ -77,7 +77,7 @@ spec:
   entryPoints:
     - web
   routes:
-    - match: Host(`central-tx-austin-102.cseretail.com`) && PathPrefix(`/tinybench/`)
+    - match: Host(`west-ca-sd-102.cseretail.com`) && PathPrefix(`/tinybench/`)
       kind: Rule
       services:
         - name: tinybench
