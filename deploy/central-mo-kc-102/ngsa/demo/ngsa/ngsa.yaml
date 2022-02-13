@@ -19,8 +19,8 @@ spec:
     metadata:
       labels:
         app: ngsa
-        version: beta-2202-13-02
-        deploy: 22-02-13-02-13-42
+        version: beta-2202-13-05
+        deploy: 22-02-13-05-05-55
     spec:
       containers:
         - name: app
@@ -30,7 +30,7 @@ spec:
           - --in-memory
           - --prometheus
           - --zone
-          - central-tx-austin
+          - central-mo-kc
           - --region
           - central
           ports:
@@ -45,10 +45,9 @@ metadata:
   name: ngsa
   namespace: ngsa
 spec:
-  type: NodePort
+  type: ClusterIP
   ports:
     - port: 8080
-      nodePort: 30080
       targetPort: http
       protocol: TCP
       name: http
@@ -59,31 +58,13 @@ spec:
 apiVersion: traefik.containo.us/v1alpha1
 kind: IngressRoute
 metadata:
-  name: ngsa-http
-  namespace: default
-spec:
-  entryPoints:
-    - web
-  routes:
-    - match: Host(`central-tx-austin-105.cseretail.com`)
-      kind: Rule
-      services:
-        - name: ngsa
-          namespace: ngsa
-          kind: Service
-          port: 8080
-
----
-apiVersion: traefik.containo.us/v1alpha1
-kind: IngressRoute
-metadata:
   name: ngsa-https
   namespace: default
 spec:
   entryPoints:
     - websecure
   routes:
-    - match: Host(`central-tx-austin-105.cseretail.com`)
+    - match: Host(`central-mo-kc-102.cseretail.com`)
       kind: Rule
       services:
         - name: ngsa

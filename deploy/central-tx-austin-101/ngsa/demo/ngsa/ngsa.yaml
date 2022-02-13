@@ -1,0 +1,75 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ngsa
+  namespace: ngsa
+  labels:
+    app.kubernetes.io/name: ngsa
+spec:
+  replicas: 1
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+       maxSurge: 1
+       maxUnavailable: 1
+  selector:
+    matchLabels:
+      app: ngsa
+  template:
+    metadata:
+      labels:
+        app: ngsa
+        version: beta-2202-13-05
+        deploy: 22-02-13-05-05-55
+    spec:
+      containers:
+        - name: app
+          image: ghcr.io/cse-labs/ngsa-app:latest
+          imagePullPolicy: Always
+          args: 
+          - --in-memory
+          - --prometheus
+          - --zone
+          - central-tx-austin
+          - --region
+          - central
+          ports:
+            - name: http
+              containerPort: 8080
+              protocol: TCP
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: ngsa
+  namespace: ngsa
+spec:
+  type: ClusterIP
+  ports:
+    - port: 8080
+      targetPort: http
+      protocol: TCP
+      name: http
+  selector:
+    app: ngsa
+    
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: ngsa-https
+  namespace: default
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - match: Host(`central-tx-austin-101.cseretail.com`)
+      kind: Rule
+      services:
+        - name: ngsa
+          namespace: ngsa
+          kind: Service
+          port: 8080
+  tls:
+    secretName: ssl-cert
