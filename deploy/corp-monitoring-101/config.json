@@ -1,8 +1,8 @@
 {
   "environment": "demo",
   "zone": "corp-monitoring",
-  "region": "central",
+  "region": "corp",
   "district": "corp-monitoring",
   "store": "corp-monitoring-101",
-  "domain": "corp-monitoring-cluster-101.cseretail.com"
+  "domain": "corp-monitoring-101.cseretail.com"
 }

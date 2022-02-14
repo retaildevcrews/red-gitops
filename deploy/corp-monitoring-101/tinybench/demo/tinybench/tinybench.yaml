@@ -57,7 +57,7 @@ spec:
   entryPoints:
     - websecure
   routes:
-    - match: Host(`corp-monitoring-cluster-101.cseretail.com`) && PathPrefix(`/tinybench/`)
+    - match: Host(`corp-monitoring-101.cseretail.com`) && PathPrefix(`/tinybench/`)
       kind: Rule
       services:
         - name: tinybench
