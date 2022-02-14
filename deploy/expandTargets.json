@@ -1,5 +1,7 @@
 {
-  "all": [ "central", "east", "west" ],
+  "all": [ "central", "east", "west", "corp-monitoring" ],
+
+  "corp-monitoring": [ "corp-monitoring-cluster-101" ],
 
   "central": [ "central-tx-austin", "central-mo-kc" ],
     "central-tx-austin": [ "central-tx-austin-101", "central-tx-austin-102" ],
