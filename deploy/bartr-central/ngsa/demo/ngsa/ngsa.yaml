@@ -30,9 +30,9 @@ spec:
           - --in-memory
           - --prometheus
           - --zone
-          - central-mo-kc
+          - bartr-central
           - --region
-          - central
+          - corp
           ports:
             - name: http
               containerPort: 8080
@@ -64,7 +64,7 @@ spec:
   entryPoints:
     - websecure
   routes:
-    - match: Host(`central-mo-kc-101.cseretail.com`)
+    - match: Host(`bartr-central.cseretail.com`)
       kind: Rule
       services:
         - name: ngsa
