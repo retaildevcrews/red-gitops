@@ -4,8 +4,5 @@
   "region": "corp",
   "district": "corp-monitoring",
   "store": "corp-monitoring-101",
-  "domain": "corp-monitoring-101.cseretail.com",
-  "webvargs": [ "-l", "5000", "--prometheus", "-r", "-s", "https://central-tx-austin-101.cseretail.com",
-           "https://central-tx-austin-102.cseretail.com", "-u", "https://raw.githubusercontent.com/bartr/tinybench/main/webv/",
-          "-f", "load.json", "--log-format", "Json", "--verbose" ]
+  "domain": "corp-monitoring-101.cseretail.com"
 }
