@@ -1,7 +1,7 @@
 {
   "all": [ "central", "east", "west", "corp", "bartr" ],
 
-  "corp": [ "corp-monitoring-101" ],
+  "corp-monitoring": [ "corp-monitoring-101" ],
   
   "bartr": [ "bartr-central", "bartr-east", "bartr-west" ],
 
