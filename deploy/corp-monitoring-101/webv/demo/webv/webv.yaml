@@ -19,8 +19,8 @@ spec:
     metadata:
       labels:
         app: webv
-        version: beta-2202-15-12
-        deploy: deploy-22-02-15-12-20-21
+        version: beta-2202-15-13
+        deploy: deploy-22-02-15-13-02-33
     spec:
       containers:
         - name: app
@@ -45,8 +45,8 @@ spec:
           - -s
           - https://central-tx-austin-101.cseretail.com
           - https://central-tx-austin-102.cseretail.com
-          # - https://central-mo-kc-101.cseretail.com
-          # - https://central-mo-kc-102.cseretail.com
+          - https://central-mo-kc-101.cseretail.com
+          - https://central-mo-kc-102.cseretail.com
           # - https://east-ga-atlanta-101.cseretail.com
           # - https://east-ga-atlanta-102.cseretail.com
           # - https://west-wa-seattle-101.cseretail.com
