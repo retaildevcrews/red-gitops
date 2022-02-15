@@ -20,7 +20,7 @@ spec:
       labels:
         app: webv
         version: beta-2202-15-21
-        deploy: deploy-22-02-15-21-28-02
+        deploy: deploy-22-02-15-21-29-24
     spec:
       containers:
         - name: app
@@ -56,7 +56,7 @@ spec:
           - -u
           - https://raw.githubusercontent.com/bartr/tinybench/main/webv/
           - -f
-          - tinybench.json
+          - load.json
           - --zone
           - bartr-west
           - --region
