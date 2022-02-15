@@ -19,8 +19,8 @@ spec:
     metadata:
       labels:
         app: webv
-        version: beta-2202-15-17
-        deploy: deploy-22-02-15-17-48-47
+        version: beta-2202-15-18
+        deploy: deploy-22-02-15-18-50-34
     spec:
       containers:
         - name: app
@@ -38,32 +38,36 @@ spec:
           #     memory: "512Mi"
           #     cpu: "500m"
           args:
-          - -l
-          - "5000"
-          - --prometheus
-          - -r
-          - -s
-          - https://central-tx-austin-101.cseretail.com
-          - https://central-tx-austin-102.cseretail.com
-          - https://central-mo-kc-101.cseretail.com
-          - https://central-mo-kc-102.cseretail.com
+          - [ "-l", "5000", "--prometheus", "-r", "-s", "https://central-tx-austin-101.cseretail.com",
+           "https://central-tx-austin-102.cseretail.com", "https://central-mo-kc-101.cseretail.com",
+           "https://central-mo-kc-102.cseretail.com", "-u", "https://raw.githubusercontent.com/bartr/tinybench/main/webv/",
+          "-f", "load.json", "--log-format", "Json", "--verbose" ]
+          # - -l
+          # - "5000"
+          # - --prometheus
+          # - -r
+          # - -s
+          # - https://central-tx-austin-101.cseretail.com
+          # - https://central-tx-austin-102.cseretail.com
+          # - https://central-mo-kc-101.cseretail.com
+          # - https://central-mo-kc-102.cseretail.com
           # - https://east-ga-atlanta-101.cseretail.com
           # - https://east-ga-atlanta-102.cseretail.com
           # - https://west-wa-seattle-101.cseretail.com
           # - https://west-wa-seattle-102.cseretail.com
           # - https://west-ca-sd-101.cseretail.com
           # - https://west-ca-sd-102.cseretail.com
-          - -u
-          - https://raw.githubusercontent.com/bartr/tinybench/main/webv/
-          - -f
-          - load.json
+          # - -u
+          # - https://raw.githubusercontent.com/bartr/tinybench/main/webv/
+          # - -f
+          # - load.json
           - --zone
           - corp-monitoring
           - --region
           - corp
-          - --log-format 
-          - Json
-          - --verbose
+          # - --log-format 
+          # - Json
+          # - --verbose
 ---
 
 apiVersion: v1
