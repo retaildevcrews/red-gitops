@@ -58,7 +58,7 @@ spec:
           - -f
           - load.json
           - --zone
-          - corp-monitoring
+          - bartr-east
           - --region
           - corp
           - --log-format 
