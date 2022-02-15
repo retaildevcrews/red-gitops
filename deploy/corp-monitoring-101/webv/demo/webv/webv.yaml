@@ -19,8 +19,8 @@ spec:
     metadata:
       labels:
         app: webv
-        version: beta-2202-15-13
-        deploy: deploy-22-02-15-13-02-33
+        version: beta-2202-15-17
+        deploy: deploy-22-02-15-17-48-47
     spec:
       containers:
         - name: app
