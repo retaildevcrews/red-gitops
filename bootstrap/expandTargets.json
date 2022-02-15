@@ -1,5 +1,5 @@
 {
-  "all": [ "central", "east", "west", "corp", "bartr" ],
+  "all": [ "central", "east", "west", "corp-monitoring", "bartr" ],
 
   "corp-monitoring": [ "corp-monitoring-101" ],
   
