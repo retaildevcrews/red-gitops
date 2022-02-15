@@ -20,7 +20,7 @@ spec:
       labels:
         app: tinybench
         version: beta-2202-15-21
-        deploy: deploy-22-02-15-21-01-52
+        deploy: deploy-22-02-15-21-15-30
     spec:
       containers:
         - name: app
