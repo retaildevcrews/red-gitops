@@ -20,7 +20,7 @@ spec:
       labels:
         app: webv
         version: beta-2202-15-18
-        deploy: deploy-22-02-15-18-50-34
+        deploy: deploy-22-02-15-18-56-56
     spec:
       containers:
         - name: app
@@ -39,8 +39,7 @@ spec:
           #     cpu: "500m"
           args:
           - [ "-l", "5000", "--prometheus", "-r", "-s", "https://central-tx-austin-101.cseretail.com",
-           "https://central-tx-austin-102.cseretail.com", "https://central-mo-kc-101.cseretail.com",
-           "https://central-mo-kc-102.cseretail.com", "-u", "https://raw.githubusercontent.com/bartr/tinybench/main/webv/",
+           "https://central-tx-austin-102.cseretail.com", "-u", "https://raw.githubusercontent.com/bartr/tinybench/main/webv/",
           "-f", "load.json", "--log-format", "Json", "--verbose" ]
           # - -l
           # - "5000"
@@ -69,7 +68,6 @@ spec:
           # - Json
           # - --verbose
 ---
-
 apiVersion: v1
 kind: Service
 metadata:
