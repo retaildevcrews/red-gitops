@@ -19,8 +19,8 @@ spec:
     metadata:
       labels:
         app: webv
-        version: beta-2202-16-20
-        deploy: deploy-22-02-16-20-23-56
+        version: beta-2202-16-21
+        deploy: deploy-22-02-16-21-32-52
     spec:
       containers:
         - name: app
@@ -54,7 +54,7 @@ spec:
           - https://west-ca-sd-101.cseretail.com
           - https://west-ca-sd-102.cseretail.com
           - -u
-          - https://raw.githubusercontent.com/bartr/tinybench/main/webv/
+          - https://raw.githubusercontent.com/retaildevcrews/red-webv/main/webvtest-temp/
           - -f
           - load.json
           - --zone
