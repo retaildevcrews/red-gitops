@@ -1,10 +1,10 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: tinybench
-  namespace: tinybench
+  name: ngsa
+  namespace: ngsa
   labels:
-    app.kubernetes.io/name: tinybench
+    app.kubernetes.io/name: ngsa
 spec:
   replicas: 1
   strategy:
@@ -14,18 +14,25 @@ spec:
        maxUnavailable: 1
   selector:
     matchLabels:
-      app: tinybench
+      app: ngsa
   template:
     metadata:
       labels:
-        app: tinybench
+        app: ngsa
         version: beta-2202-16-20
         deploy: deploy-22-02-16-20-20-34
     spec:
       containers:
         - name: app
-          image: ghcr.io/bartr/tinybench:latest
+          image: ghcr.io/cse-labs/ngsa-app:latest
           imagePullPolicy: Always
+          args: 
+          - --in-memory
+          - --prometheus
+          - --zone
+          - west-ca-sd
+          - --region
+          - west
           ports:
             - name: http
               containerPort: 8080
@@ -35,8 +42,8 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: tinybench
-  namespace: tinybench
+  name: ngsa
+  namespace: ngsa
 spec:
   type: ClusterIP
   ports:
@@ -45,23 +52,23 @@ spec:
       protocol: TCP
       name: http
   selector:
-    app: tinybench
+    app: ngsa
     
 ---
 apiVersion: traefik.containo.us/v1alpha1
 kind: IngressRoute
 metadata:
-  name: tinybench-https
+  name: ngsa-https
   namespace: default
 spec:
   entryPoints:
     - websecure
   routes:
-    - match: Host(`central-tx-austin-102.cseretail.com`) && PathPrefix(`/tinybench/`)
+    - match: Host(`west-ca-sd-101.cseretail.com`)
       kind: Rule
       services:
-        - name: tinybench
-          namespace: tinybench
+        - name: ngsa
+          namespace: ngsa
           kind: Service
           port: 8080
   tls:
