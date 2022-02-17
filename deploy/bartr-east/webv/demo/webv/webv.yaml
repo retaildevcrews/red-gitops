@@ -19,8 +19,8 @@ spec:
     metadata:
       labels:
         app: webv
-        version: beta-2202-17-12
-        deploy: deploy-22-02-17-12-34-28
+        version: beta-2202-17-13
+        deploy: deploy-22-02-17-13-16-35
     spec:
       containers:
         - name: app
@@ -56,7 +56,7 @@ spec:
           - -u
           - https://raw.githubusercontent.com/retaildevcrews/akdc/main/red-vms/webv/
           - -f
-          - benchmark.json
+          - baseline.json
           - --zone
           - bartr-east
           - --region
