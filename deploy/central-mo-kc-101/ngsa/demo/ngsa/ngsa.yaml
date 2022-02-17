@@ -19,8 +19,8 @@ spec:
     metadata:
       labels:
         app: ngsa
-        version: beta-2202-17-13
-        deploy: deploy-22-02-17-13-30-21
+        version: beta-2202-17-14
+        deploy: deploy-22-02-17-14-04-13
     spec:
       containers:
         - name: app
