@@ -20,7 +20,7 @@ spec:
       labels:
         app: webv
         version: beta-2202-17-15
-        deploy: deploy-22-02-17-15-32-48
+        deploy: deploy-22-02-17-15-38-53
     spec:
       containers:
         - name: app
