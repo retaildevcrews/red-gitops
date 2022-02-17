@@ -58,7 +58,7 @@ spec:
           - -f
           - benchmark.json
           - --zone
-          - bartr-central
+          - corp-monitoring
           - --region
           - corp
           - --log-format 
