@@ -60,7 +60,7 @@ spec:
   entryPoints:
     - websecure
   routes:
-    - match: Host(`bartr-central.cseretail.com`) && PathPrefix(`/heartbeat/`)
+    - match: Host(`bartr-west.cseretail.com`) && PathPrefix(`/heartbeat/`)
       kind: Rule
       services:
         - name: tinybench
