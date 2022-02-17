@@ -20,7 +20,7 @@ spec:
       labels:
         app: webv
         version: beta-2202-17-13
-        deploy: deploy-22-02-17-13-16-35
+        deploy: deploy-22-02-17-13-30-21
     spec:
       containers:
         - name: app
@@ -56,7 +56,7 @@ spec:
           - -u
           - https://raw.githubusercontent.com/retaildevcrews/akdc/main/red-vms/webv/
           - -f
-          - baseline.json
+          - benchmark.json
           - --zone
           - bartr-central
           - --region
