@@ -58,9 +58,9 @@ spec:
           - -f
           - benchmark.json
           - --zone
-          - bartr-east
+          - west-wa-redmond
           - --region
-          - corp
+          - west
           - --log-format 
           - Json
 ---
