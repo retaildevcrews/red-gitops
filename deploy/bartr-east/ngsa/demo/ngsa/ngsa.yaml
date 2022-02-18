@@ -30,9 +30,9 @@ spec:
           - --in-memory
           - --prometheus
           - --zone
-          - west-wa-redmond
+          - bartr-east
           - --region
-          - west
+          - corp
           ports:
             - name: http
               containerPort: 8080
@@ -64,7 +64,7 @@ spec:
   entryPoints:
     - websecure
   routes:
-    - match: Host(`west-wa-redmond-101.cseretail.com`)
+    - match: Host(`bartr-east.cseretail.com`)
       kind: Rule
       services:
         - name: ngsa
