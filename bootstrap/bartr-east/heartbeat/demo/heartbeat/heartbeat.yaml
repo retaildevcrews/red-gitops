@@ -1,0 +1,69 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: heartbeat
+  namespace: heartbeat
+  labels:
+    app.kubernetes.io/name: heartbeat
+spec:
+  replicas: 1
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+       maxSurge: 1
+       maxUnavailable: 1
+  selector:
+    matchLabels:
+      app: heartbeat
+  template:
+    metadata:
+      labels:
+        app: heartbeat
+    spec:
+      containers:
+        - name: app
+          image: ghcr.io/bartr/tinybench:latest
+          imagePullPolicy: Always
+          ports:
+            - name: http
+              containerPort: 8080
+              protocol: TCP
+          args:
+          - -u
+          - /heartbeat
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: heartbeat
+  namespace: heartbeat
+spec:
+  type: ClusterIP
+  ports:
+    - port: 8080
+      targetPort: http
+      protocol: TCP
+      name: http
+  selector:
+    app: heartbeat
+    
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: heartbeat-https
+  namespace: default
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - match: Host(`bartr-east.cseretail.com`) && PathPrefix(`/heartbeat/`)
+      kind: Rule
+      services:
+        - name: heartbeat
+          namespace: heartbeat
+          kind: Service
+          port: 8080
+  tls:
+    secretName: ssl-cert
