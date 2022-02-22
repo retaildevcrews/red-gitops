@@ -74,9 +74,12 @@ data:
         username: 261866
         password_file: /etc/prometheus/secrets/password
     scrape_configs:
-      - job_name: 'webv'
+      - job_name: 'webv-heartbeat'
         static_configs:
-          - targets: [ 'webv.webv.svc.cluster.local:8080' ]
+          - targets: [ 'webv-heartbeat.webv.svc.cluster.local:8080' ]
+      - job_name: 'webv-ngsa'
+        static_configs:
+          - targets: [ 'webv-ngsa.webv.svc.cluster.local:8080' ]
       - job_name: 'ngsa'
         static_configs:
           - targets: [ 'ngsa.ngsa.svc.cluster.local:8080' ]
