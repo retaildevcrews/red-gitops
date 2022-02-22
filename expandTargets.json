@@ -1,8 +1,6 @@
 {
   "all": [ "central", "east", "west", "corp-monitoring", "bartr" ],
 
-  "corp-monitoring": [ "corp-monitoring-101" ],
-  
   "bartr": [ "bartr-central", "bartr-east", "bartr-west" ],
 
   "central": [ "central-tx-austin", "central-mo-kc", "bartr-central" ],
