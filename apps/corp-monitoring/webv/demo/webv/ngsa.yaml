@@ -22,7 +22,7 @@ spec:
     spec:
       containers:
         - name: app
-          image: ghcr.io/cse-labs/webvalidate:latest
+          image: ghcr.io/cse-labs/webvalidate:beta
           imagePullPolicy: Always
           ports:
             - name: http
