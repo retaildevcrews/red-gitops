@@ -3,6 +3,7 @@ kind: ServiceAccount
 metadata:
   name: fluent-bit
   namespace: fluent-bit
+
 ---
 
 kind: ClusterRole
@@ -19,6 +20,7 @@ rules:
   - get
   - watch
   - list
+
 ---
 
 kind: ClusterRoleBinding
@@ -134,6 +136,7 @@ data:
         Time_Key time
         Time_Format %Y-%m-%dT%H:%M:%S.%L
         Time_Keep Off
+
 ---
 
 apiVersion: v1
