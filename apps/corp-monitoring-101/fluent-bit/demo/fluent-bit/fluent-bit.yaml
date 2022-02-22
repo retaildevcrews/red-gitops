@@ -65,8 +65,8 @@ data:
         Url               ${LOKI_URL}
         Match             kube.var.log.containers.webv*.*
         Labels            {job="webv-red"}
-        LabelKeys         StatusCode,Duration,Path,Server
-        RemoveKeys        StatusCode,Duration,Path,Server
+        LabelKeys         StatusCode,Duration,Server
+        RemoveKeys        StatusCode,Duration,Server
     [OUTPUT]
         Name              grafana-loki
         Url               ${LOKI_URL}
@@ -78,7 +78,7 @@ data:
     [INPUT]
         Name              tail
         Tag               kube.*
-        Path              /var/log/containers/webv/*.log
+        Path              /var/log/containers/webv*.log
         Parser            cri
         DB                /var/log/flb_kube.db
         Mem_Buf_Limit     5MB
@@ -87,7 +87,7 @@ data:
     [INPUT]
         Name              tail
         Tag               kube.*
-        Path              /var/log/containers/ngsa/*.log
+        Path              /var/log/containers/ngsa*.log
         Parser            cri
         DB                /var/log/flb_kube.db
         Mem_Buf_Limit     5MB
