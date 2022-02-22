@@ -62,7 +62,7 @@ spec:
   entryPoints:
     - websecure
   routes:
-    - match: Host(`corp-monitoring-101.cseretail.com`) && PathPrefix(`/heartbeat/`)
+    - match: Host(`corp-monitoring.cseretail.com`) && PathPrefix(`/heartbeat/`)
       kind: Rule
       services:
         - name: heartbeat

@@ -68,7 +68,7 @@ data:
       scrape_interval: 5s
       evaluation_interval: 5s
       external_labels:
-        origin_prometheus: corp-monitoring-101
+        origin_prometheus: corp-monitoring
     rule_files:
       - /etc/prometheus/prometheus.rules
     remote_write:
