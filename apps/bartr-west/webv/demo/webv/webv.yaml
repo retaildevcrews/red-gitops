@@ -1,10 +1,10 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: webv-ngsa
+  name: webv
   namespace: webv
   labels:
-    app.kubernetes.io/name: webv-ngsa
+    app.kubernetes.io/name: webv
 spec:
   replicas: 1
   strategy:
@@ -14,11 +14,11 @@ spec:
        maxUnavailable: 1
   selector:
     matchLabels:
-      app: webv-ngsa
+      app: webv
   template:
     metadata:
       labels:
-        app: webv-ngsa
+        app: webv
     spec:
       containers:
         - name: app
@@ -53,10 +53,12 @@ spec:
           - https://west-wa-seattle-102.cseretail.com
           - https://west-ca-sd-101.cseretail.com
           - https://west-ca-sd-102.cseretail.com
+          - -u
+          - https://raw.githubusercontent.com/retaildevcrews/akdc/main/red-vms/webv/
           - -f
           - benchmark.json
           - --zone
-          - bartr-central
+          - bartr-west
           - --region
           - corp
           - --log-format 
@@ -65,10 +67,10 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: webv-ngsa
+  name: webv
   namespace: webv
   labels:
-    app: webv-ngsa
+    app: webv
 spec:
   type: ClusterIP
   ports:
@@ -77,4 +79,4 @@ spec:
       protocol: TCP
       name: http
   selector:
-    app: webv-ngsa
+    app: webv
