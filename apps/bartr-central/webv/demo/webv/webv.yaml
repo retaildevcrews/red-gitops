@@ -28,19 +28,19 @@ spec:
             - name: http
               containerPort: 8080
               protocol: TCP
-          # resources:
-          #   limits:
-          #     memory: "512Mi"
-          #     cpu: "1000m"
-          #   requests:
-          #     memory: "512Mi"
-          #     cpu: "500m"
+          resources:
+            limits:
+              memory: "512Mi"
+              cpu: "1000m"
+            requests:
+              memory: "256Mi"
+              cpu: "500m"
           args:
-          - -l
+          - --sleep
           - "5000"
           - --prometheus
-          - -r
-          - -s
+          - --run-loop
+          - --server
           - https://central-tx-austin-101.cseretail.com
           - https://central-tx-austin-102.cseretail.com
           - https://central-mo-kc-101.cseretail.com
@@ -53,9 +53,9 @@ spec:
           - https://west-wa-seattle-102.cseretail.com
           - https://west-ca-sd-101.cseretail.com
           - https://west-ca-sd-102.cseretail.com
-          - -u
+          - --base-url
           - https://raw.githubusercontent.com/retaildevcrews/akdc/main/red-vms/webv/
-          - -f
+          - --files
           - benchmark.json
           - --zone
           - bartr-central
