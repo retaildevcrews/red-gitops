@@ -22,7 +22,7 @@ spec:
     spec:
       containers:
         - name: app
-          image: ghcr.io/cse-labs/webvalidate:beta
+          image: ghcr.io/cse-labs/webv-red:latest
           imagePullPolicy: Always
           ports:
             - name: http
@@ -54,10 +54,8 @@ spec:
           - https://west-wa-seattle-102.cseretail.com
           - https://west-ca-sd-101.cseretail.com
           - https://west-ca-sd-102.cseretail.com
-          - --base-url
-          - https://raw.githubusercontent.com/retaildevcrews/akdc/main/red-vms/webv/
           - --files
-          - benchmark.json
+          - heartbeat-benchmark.json
           - --zone
           - corp-monitoring
           - --region
