@@ -60,9 +60,10 @@ spec:
           - corp-monitoring
           - --region
           - corp
-          - --log-format 
+          - --log-format
           - Json
 ---
+
 apiVersion: v1
 kind: Service
 metadata:
