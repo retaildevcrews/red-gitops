@@ -14,5 +14,5 @@
   "west": [ "west-ca-sd", "west-wa-seattle", "west-wa-redmond", "bartr-west" ],
     "west-ca-sd": [ "west-ca-sd-101", "west-ca-sd-102" ],
     "west-wa-seattle": [ "west-wa-seattle-101", "west-wa-seattle-102" ],
-    "west-wa-redmond": [ "west-wa-redmond-101", "west-wa-redmond-102" ]
+    "west-wa-redmond": [ "west-wa-redmond-101", "west-wa-redmond-102", "west-wa-redmond-103" ]
 }
