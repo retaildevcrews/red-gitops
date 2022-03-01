@@ -67,7 +67,7 @@ spec:
   entryPoints:
     - websecure
   routes:
-    - match: Host(`west-wa-redmond-102.cseretail.com`)
+    - match: Host(`west-wa-redmond-103.cseretail.com`)
       kind: Rule
       services:
         - name: ai-order-accuracy-beta
