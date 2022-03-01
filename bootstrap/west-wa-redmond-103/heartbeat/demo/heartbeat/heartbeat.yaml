@@ -1,10 +1,10 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: ai-order-accuracy
-  namespace: ai-order-accuracy
+  name: heartbeat
+  namespace: heartbeat
   labels:
-    app.kubernetes.io/name: ai-order-accuracy
+    app.kubernetes.io/name: heartbeat
 spec:
   replicas: 1
   strategy:
@@ -14,38 +14,34 @@ spec:
        maxUnavailable: 1
   selector:
     matchLabels:
-      app: ai-order-accuracy
+      app: heartbeat
   template:
     metadata:
       labels:
-        app: ai-order-accuracy
+        app: heartbeat
     spec:
       containers:
         - name: app
-          image: ghcr.io/cse-labs/ngsa-app:latest
+          image: ghcr.io/bartr/tinybench:latest
           imagePullPolicy: Always
-          args: 
-          - --in-memory
-          - --prometheus
-          - --zone
-          - central-tx-austin
-          - --region
-          - central
+          resources:
+            limits:
+              cpu: 200m
+              memory: 64Mi
           ports:
             - name: http
               containerPort: 8080
               protocol: TCP
-          resources:
-            limits:
-              cpu: 500m
-              memory: 512Mi
+          args:
+          - -u
+          - /heartbeat
 
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: ai-order-accuracy
-  namespace: ai-order-accuracy
+  name: heartbeat
+  namespace: heartbeat
 spec:
   type: ClusterIP
   ports:
@@ -54,23 +50,23 @@ spec:
       protocol: TCP
       name: http
   selector:
-    app: ai-order-accuracy
+    app: heartbeat
     
 ---
 apiVersion: traefik.containo.us/v1alpha1
 kind: IngressRoute
 metadata:
-  name: ai-order-accuracy-https
+  name: heartbeat-https
   namespace: default
 spec:
   entryPoints:
     - websecure
   routes:
-    - match: Host(`central-tx-austin-101.cseretail.com`)
+    - match: Host(`west-wa-redmond-103.cseretail.com`) && PathPrefix(`/heartbeat/`)
       kind: Rule
       services:
-        - name: ai-order-accuracy
-          namespace: ai-order-accuracy
+        - name: heartbeat
+          namespace: heartbeat
           kind: Service
           port: 8080
   tls:
