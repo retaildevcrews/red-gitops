@@ -1,0 +1,11 @@
+{
+    "apps": [
+        "ai-order-accuracy",
+        "heartbeat",
+        "webv",
+        "flux-check",
+        "prometheus",
+        "fluent-bit"
+    ],
+    "appsDir": "src"
+}
