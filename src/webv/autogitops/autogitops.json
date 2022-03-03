@@ -1,8 +1,0 @@
-{
-    "name": "webv",
-    "namespace": "webv",
-    "imageName": "ghcr.io/cse-labs/webv-red",
-    "imageTag": "latest",
-    "targetDir": "./apps",
-    "targets": [ "corp-monitoring" ]
-}
