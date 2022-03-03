@@ -1,0 +1,8 @@
+#!/bin/bash
+
+if [[ $(kubectl get ns) == *"dapr-system"* ]]
+then
+   echo "$(hostname) success"
+else
+   echo "$(hostname) failed"
+fi

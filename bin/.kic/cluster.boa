@@ -1,0 +1,13 @@
+# cluster commands
+module
+	name: cluster
+	short: Local cluster commands
+
+runCommand
+	path: reset
+
+runCommand
+	path: delete
+
+runCommand
+	path: jumpbox

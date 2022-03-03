@@ -1,0 +1,14 @@
+# root commands with no sub-commands
+runCommand
+	path: sync
+
+# hide unused modules
+module
+	name: fleet
+	hidden: true
+	parent: rootCmd
+
+module
+	name: targets
+	hidden: true
+	parent: rootCmd

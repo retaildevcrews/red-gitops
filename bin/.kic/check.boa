@@ -1,0 +1,19 @@
+# description to potentially read at runtime
+module
+	name: check
+	short: Check status on the local cluster
+
+runCommand
+	path: check/flux
+
+runCommand
+	path: check/heartbeat
+
+runCommand
+	path: check/logs
+
+runCommand
+	path: check/aioa
+
+runCommand
+	path: check/setup
