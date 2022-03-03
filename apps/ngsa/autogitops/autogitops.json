@@ -1,0 +1,8 @@
+{
+    "imageName": "ghcr.io/cse-labs/ngsa-app",
+    "imageTag": "latest",
+    "name": "ngsa",
+    "namespace": "ngsa",
+    "targetDir": "./apps",
+    "targets": [ ]
+}

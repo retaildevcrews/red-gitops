@@ -1,0 +1,8 @@
+{
+    "name": "prometheus",
+    "namespace": "prometheus",
+    "imageName": "prom/prometheus",
+    "imageTag": "latest",
+    "targetDir": "./apps",
+    "targets": [ "corp-monitoring" ]
+}
