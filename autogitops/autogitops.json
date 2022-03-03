@@ -7,5 +7,5 @@
         "prometheus",
         "fluent-bit"
     ],
-    "appsDir": "src"
+    "appsDir": "apps"
 }
