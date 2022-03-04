@@ -1,5 +1,5 @@
 # description to potentially read at runtime
-module
+command
 	name: check
 	short: Check status on the local cluster
 

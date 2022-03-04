@@ -2,13 +2,13 @@
 runCommand
 	path: sync
 
-# hide unused modules
-module
+# hide unused command
+command
 	name: fleet
 	hidden: true
 	parent: rootCmd
 
-module
+command
 	name: targets
 	hidden: true
 	parent: rootCmd

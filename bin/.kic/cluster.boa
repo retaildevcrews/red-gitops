@@ -1,5 +1,5 @@
 # cluster commands
-module
+command
 	name: cluster
 	short: Local cluster commands
 
