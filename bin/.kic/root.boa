@@ -6,9 +6,9 @@ runCommand
 command
 	name: fleet
 	hidden: true
-	parent: rootCmd
+
+popCommand
 
 command
 	name: targets
 	hidden: true
-	parent: rootCmd
