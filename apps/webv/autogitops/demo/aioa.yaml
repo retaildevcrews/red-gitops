@@ -1,10 +1,10 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{gitops.name}}-ngsa
+  name: {{gitops.name}}-aioa
   namespace: {{gitops.namespace}}
   labels:
-    app.kubernetes.io/name: {{gitops.name}}-ngsa
+    app.kubernetes.io/name: {{gitops.name}}-aioa
 spec:
   replicas: 1
   strategy:
@@ -14,11 +14,11 @@ spec:
        maxUnavailable: 1
   selector:
     matchLabels:
-      app: {{gitops.name}}-ngsa
+      app: {{gitops.name}}-aioa
   template:
     metadata:
       labels:
-        app: {{gitops.name}}-ngsa
+        app: {{gitops.name}}-aioa
     spec:
       containers:
         - name: app
@@ -62,10 +62,10 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: {{gitops.name}}-ngsa
+  name: {{gitops.name}}-aioa
   namespace: {{gitops.namespace}}
   labels:
-    app: {{gitops.name}}-ngsa
+    app: {{gitops.name}}-aioa
 spec:
   type: ClusterIP
   ports:
@@ -74,4 +74,4 @@ spec:
       protocol: TCP
       name: http
   selector:
-    app: {{gitops.name}}-ngsa
+    app: {{gitops.name}}-aioa
