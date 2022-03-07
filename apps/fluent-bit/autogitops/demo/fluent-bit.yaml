@@ -70,8 +70,8 @@ data:
     [OUTPUT]
         Name              grafana-loki
         Url               ${LOKI_URL}
-        Match             kube.var.log.containers.ngsa*.*
-        Labels            {job="ngsa-red"}
+        Match             kube.var.log.containers.ai-order-accuracy*.*
+        Labels            {job="aioa-red"}
         LabelKeys         StatusCode,Duration,Category,CosmosName,stream
         RemoveKeys        StatusCode,Duration,Category,CosmosName,stream
   input-kubernetes.conf: |
@@ -87,7 +87,7 @@ data:
     [INPUT]
         Name              tail
         Tag               kube.*
-        Path              /var/log/containers/ngsa*.log
+        Path              /var/log/containers/ai-order-accuracy*.log
         Parser            cri
         DB                /var/log/flb_kube.db
         Mem_Buf_Limit     5MB
