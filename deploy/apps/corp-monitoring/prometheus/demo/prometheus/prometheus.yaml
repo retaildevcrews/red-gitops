@@ -80,12 +80,12 @@ data:
       - job_name: 'webv-heartbeat'
         static_configs:
           - targets: [ 'webv-heartbeat.webv.svc.cluster.local:8080' ]
-      - job_name: 'webv-ngsa'
+      - job_name: 'webv-aioa'
         static_configs:
-          - targets: [ 'webv-ngsa.webv.svc.cluster.local:8080' ]
-      - job_name: 'ngsa'
+          - targets: [ 'webv-aioa.webv.svc.cluster.local:8080' ]
+      - job_name: 'aioa'
         static_configs:
-          - targets: [ 'ngsa.ngsa.svc.cluster.local:8080' ]
+          - targets: [ 'ai-order-accuracy.ai-order-accuracy.svc.cluster.local:8080' ]
 
 ---
 

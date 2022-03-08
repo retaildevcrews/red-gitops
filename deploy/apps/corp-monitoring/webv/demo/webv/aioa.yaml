@@ -1,10 +1,10 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: webv-ngsa
+  name: webv-aioa
   namespace: webv
   labels:
-    app.kubernetes.io/name: webv-ngsa
+    app.kubernetes.io/name: webv-aioa
 spec:
   replicas: 1
   strategy:
@@ -14,11 +14,11 @@ spec:
        maxUnavailable: 1
   selector:
     matchLabels:
-      app: webv-ngsa
+      app: webv-aioa
   template:
     metadata:
       labels:
-        app: webv-ngsa
+        app: webv-aioa
     spec:
       containers:
         - name: app
@@ -62,10 +62,10 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: webv-ngsa
+  name: webv-aioa
   namespace: webv
   labels:
-    app: webv-ngsa
+    app: webv-aioa
 spec:
   type: ClusterIP
   ports:
@@ -74,4 +74,4 @@ spec:
       protocol: TCP
       name: http
   selector:
-    app: webv-ngsa
+    app: webv-aioa
