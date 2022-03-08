@@ -4,8 +4,5 @@
     "name": "ai-order-accuracy",
     "namespace": "ai-order-accuracy",
     "targetDir": "./apps",
-    "targets": [
-        "east-nc-raleigh",
-        "central-tx-austin"
-    ]
+    "targets": [ "east-nc-raleigh", "central-tx-austin", "central" ]
 }
