@@ -40,7 +40,6 @@ spec:
           - "5000"
           - --prometheus
           - --run-loop
-          - --verbose
           - --server
           - https://central-tx-austin-101.cseretail.com
           - https://central-tx-austin-102.cseretail.com
