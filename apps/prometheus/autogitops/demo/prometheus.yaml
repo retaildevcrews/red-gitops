@@ -82,14 +82,14 @@ data:
           - targets: [ 'webv-heartbeat.webv.svc.cluster.local:8080' ]
         metric_relabel_configs:
         - source_labels: [ __name__ ]
-          regex: (WebVDuration_bucket|WebVDuration_sum|WebVSummary_sum)
+          regex: "WebVDuration_bucket|WebVDuration_sum|WebVSummary_sum"
           action: drop
       - job_name: 'webv-aioa'
         static_configs:
           - targets: [ 'webv-aioa.webv.svc.cluster.local:8080' ]
         metric_relabel_configs:
         - source_labels: [ __name__ ]
-          regex: (WebVDuration_bucket|WebVDuration_sum|WebVSummary_sum)
+          regex: "WebVDuration_bucket|WebVDuration_sum|WebVSummary_sum"
           action: drop
 
 ---
