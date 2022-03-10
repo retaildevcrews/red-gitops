@@ -1,7 +1,7 @@
 {
     "name": "heartbeat",
     "namespace": "heartbeat",
-    "imageName": "ghcr.io/bartr/tinybench",
+    "imageName": "ghcr.io/retaildevcrews/heartbeat",
     "imageTag": "latest",
     "targetDir": "./bootstrap",
     "targets": [ "all" ]
