@@ -83,10 +83,6 @@ data:
       - job_name: 'webv-aioa'
         static_configs:
           - targets: [ 'webv-aioa.webv.svc.cluster.local:8080' ]
-      - job_name: 'aioa'
-        static_configs:
-          - targets: [ 'ai-order-accuracy.ai-order-accuracy.svc.cluster.local:8080' ]
-
 ---
 
 apiVersion: apps/v1
