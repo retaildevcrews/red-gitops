@@ -19,11 +19,6 @@ echo "$(date +'%Y-%m-%d %H:%M:%S')  akdc-pre-flux start" >> /home/akdc/status
 sudo chown -R "$USER:$USER" /home/akdc
 chmod 600 /home/akdc/.ssh/akdc.pat
 
-# generate kic completion
-../../bin/kic completion bash > /home/akdc/.oh-my-bash/completions/kic
-# shellcheck source=/dev/null
-source /home/akdc/.oh-my-bash/completions/kic
-
 sudo chown -R "$USER:$USER" /home/akdc
 
 if [ "$AKDC_DEBUG" != "true" ]
