@@ -26,7 +26,6 @@ spec:
           imagePullPolicy: Always
           args: 
           - --in-memory
-          - --prometheus
           - --zone
           - bartr-central
           - --region
