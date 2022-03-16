@@ -26,6 +26,7 @@ spec:
           imagePullPolicy: Always
           args: 
           - --in-memory
+          - --prometheus
           - --zone
           - {{gitops.config.zone}}
           - --region
