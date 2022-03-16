@@ -148,58 +148,66 @@ data:
 
 ---
 
-apiVersion: v1
-kind: Pod
+apiVersion: apps/v1
+kind: Deployment
 metadata:
   name: fluent-bit
   namespace: fluent-bit
   labels:
-    app: fluent-bit
+    app.kubernetes.io/name: fluent-bit
 spec:
-    priorityClassName: system-node-critical
-    serviceAccountName: fluent-bit
-    terminationGracePeriodSeconds: 10
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: fluent-bit
+  template:
+    metadata:
+      name: fluent-bit
+      labels:
+        app.kubernetes.io/name: fluent-bit
+    spec:
+      priorityClassName: system-node-critical
+      serviceAccountName: fluent-bit
+      terminationGracePeriodSeconds: 10
+      securityContext:
+        seccompProfile:
+          type: RuntimeDefault
+      containers:
+        - name: fluent-bit
+          imagePullPolicy: Always
+          image: grafana/fluent-bit-plugin-loki:latest
+          env:
+            - name: LOKI_URL
+              valueFrom:
+                secretKeyRef:
+                  name: fluent-bit-secrets
+                  key: LokiUrl
+          ports:
+            - containerPort: 2020
+          resources:
+            limits:
+              cpu: 500m
+              memory: 512Mi
+          volumeMounts:
+          - name: varlog
+            mountPath: /var/log
 
-    securityContext:
-      seccompProfile:
-        type: RuntimeDefault
+          - name: varlibdockercontainers
+            mountPath: /var/lib/docker/containers
+            readOnly: true
 
-    containers:
-    - name: fluent-bit
-      imagePullPolicy: Always
-      image: grafana/fluent-bit-plugin-loki:latest
-      env:
-        - name: LOKI_URL
-          valueFrom:
-            secretKeyRef:
-              name: fluent-bit-secrets
-              key: LokiUrl
-      ports:
-        - containerPort: 2020
-      resources:
-        limits:
-          cpu: 500m
-          memory: 512Mi
-      volumeMounts:
-      - name: varlog
-        mountPath: /var/log
+          - name: fluent-bit-config
+            mountPath: /fluent-bit/etc/
 
-      - name: varlibdockercontainers
-        mountPath: /var/lib/docker/containers
-        readOnly: true
+      volumes:
+        - name: varlog
+          hostPath:
+            path: /var/log
 
-      - name: fluent-bit-config
-        mountPath: /fluent-bit/etc/
+        - name: varlibdockercontainers
+          hostPath:
+            path: /var/lib/docker/containers
 
-    volumes:
-    - name: varlog
-      hostPath:
-        path: /var/log
-
-    - name: varlibdockercontainers
-      hostPath:
-        path: /var/lib/docker/containers
-
-    - name: fluent-bit-config
-      configMap:
-        name: fluent-bit-config
+        - name: fluent-bit-config
+          configMap:
+            name: fluent-bit-config
