@@ -1,5 +1,5 @@
 {
-    "imageName": "ghcr.io/cse-labs/ngsa-app",
+    "imageName": "ghcr.io/cse-labs/imdb-app",
     "imageTag": "latest",
     "name": "ai-order-accuracy",
     "namespace": "ai-order-accuracy",
