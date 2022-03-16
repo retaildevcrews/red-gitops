@@ -6,7 +6,6 @@
     "targetDir": "./apps",
     "targets": [
         "east-nc-raleigh",
-        "central-tx-austin",
         "central"
     ]
 }
