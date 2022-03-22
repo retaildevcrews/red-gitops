@@ -38,6 +38,19 @@ spec:
             limits:
               cpu: 500m
               memory: 512Mi
+          readinessProbe:
+            initialDelaySeconds: 5
+            failureThreshold: 60
+            periodSeconds: 2
+            httpGet:
+              path: /readyz
+              port: 8080
+          livenessProbe:
+            initialDelaySeconds: 60
+            periodSeconds: 60
+            httpGet:
+              path: /healthz
+              port: 8080
 
 ---
 apiVersion: v1
