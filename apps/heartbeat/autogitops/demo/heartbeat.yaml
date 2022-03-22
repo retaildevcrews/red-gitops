@@ -32,6 +32,19 @@ spec:
             - name: http
               containerPort: 8080
               protocol: TCP
+          readinessProbe:
+            initialDelaySeconds: 5
+            failureThreshold: 60
+            periodSeconds: 2
+            httpGet:
+              path: /healthz
+              port: 8080
+          livenessProbe:
+            initialDelaySeconds: 60
+            periodSeconds: 60
+            httpGet:
+              path: /healthz
+              port: 8080
 
 ---
 apiVersion: v1
