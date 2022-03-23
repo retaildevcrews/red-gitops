@@ -9,28 +9,13 @@ volumes:
   - volume: /prometheus:/prometheus
     nodeFilters:
       - server[0]
-  - volume: /grafana:/grafana
-    nodeFilters:
-      - server[0]
 ports:
   - port: 443:443
     nodeFilters:
       - loadbalancer
-  - port: 80:80 
+  - port: 80:80
     nodeFilters:
       - loadbalancer
-  - port: 30000:30000
-    nodeFilters:
-      - server[0]
-  - port: 30080:30080
-    nodeFilters:
-      - server[0]
-  - port: 30088:30088
-    nodeFilters:
-      - server[0]
-  - port: 32000:32000
-    nodeFilters:
-      - server[0]
 
 options:
   k3d:
