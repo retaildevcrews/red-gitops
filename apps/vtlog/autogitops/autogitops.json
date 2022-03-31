@@ -1,0 +1,8 @@
+{
+    "name": "vtlog",
+    "namespace": "vtlog",
+    "imageName": "ghcr.io/retaildevcrews/vtlog",
+    "imageTag": "beta",
+    "targetDir": "apps",
+    "targets": ["west"]
+}
