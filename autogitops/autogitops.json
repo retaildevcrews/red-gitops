@@ -4,7 +4,8 @@
         "heartbeat",
         "webv",
         "prometheus",
-        "fluent-bit"
+        "fluent-bit",
+        "vtlog"
     ],
     "appsDir": "apps",
     "targets": [
