@@ -197,4 +197,4 @@ spec:
 
         - name: fluent-bit-{{gitops.name}}-config
           configMap:
-            name: fluent-bit-config
+            name: fluent-bit-{{gitops.name}}-config
