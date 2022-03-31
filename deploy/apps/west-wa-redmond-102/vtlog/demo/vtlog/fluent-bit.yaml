@@ -1,0 +1,200 @@
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: fluent-bit-vtlog
+  namespace: vtlog
+
+---
+
+kind: ClusterRole
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: fluent-bit-vtlog
+  namespace: vtlog
+rules:
+- apiGroups: [ "" ]
+  resources:
+  - namespaces
+  - pods
+  verbs:
+  - get
+  - watch
+  - list
+
+---
+
+kind: ClusterRoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: fluent-bit-vtlog
+  namespace: vtlog
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: fluent-bit-vtlog
+subjects:
+- kind: ServiceAccount
+  name: fluent-bit-vtlog
+  namespace: vtlog
+
+---
+
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: fluent-bit-vtlog-config
+  namespace: vtlog
+  labels:
+    k8s-app: fluent-bit-vtlog
+data:
+  fluent-bit.conf: |
+    [SERVICE]
+        Flush         1
+        Log_Level     info
+        Daemon        off
+        Parsers_File  parsers.conf
+        HTTP_Server   On
+        HTTP_Listen   0.0.0.0
+        HTTP_Port     2020
+    @INCLUDE input-kubernetes.conf
+    @INCLUDE filter-kubernetes.conf
+    @INCLUDE output.conf
+  output.conf: |
+    [OUTPUT]
+        Name              kafka
+        Match             kube.var.log.containers.vtlog*.*
+        brokers                     corp-monitoring-eh.servicebus.windows.net:9093
+        topics                      corp-monitoring-eh
+        rdkafka.security.protocol   SASL_SSL
+        rdkafka.sasl.username       $ConnectionString
+        rdkafka.sasl.password       ${EVENT_HUB_CONNECTION_STRING}
+        rdkafka.sasl.mechanism      PLAIN
+        storage.total_limit_size 15M
+  input-kubernetes.conf: |
+    [INPUT]
+        Name              tail
+        Tag               kube.*
+        Path              /var/log/containers/vtlog*.log
+        Parser            cri
+        DB                /var/log/flb_kube.db
+        Mem_Buf_Limit     5MB
+        Skip_Long_Lines   Off
+        Refresh_Interval  10
+  filter-kubernetes.conf: |
+    [FILTER]
+        Name                kubernetes
+        Match               kube.*
+        Kube_URL            https://kubernetes.default.svc:443
+        Kube_CA_File        /var/run/secrets/kubernetes.io/serviceaccount/ca.crt
+        Kube_Token_File     /var/run/secrets/kubernetes.io/serviceaccount/token
+        Kube_Tag_Prefix     kube.var.log.containers.
+        Merge_Log           On
+        Merge_Log_Trim      On
+        Keep_Log            Off
+        K8S-Logging.Parser  On
+        K8S-Logging.Exclude Off
+        Annotations         Off
+        Labels              On
+    [FILTER]
+        Name          nest
+        Match         kube.*
+        Operation     lift
+        Nested_under  kubernetes
+        Add_prefix    kubernetes_
+    [FILTER]
+        Name          nest
+        Match         kube.*
+        Operation     lift
+        Nested_under  kubernetes_labels
+        Add_prefix    kubernetes_labels_
+  parsers.conf: |
+    [PARSER]
+        Name        json
+        Format      json
+        Time_Key    time
+        Time_Format %d/%b/%Y:%H:%M:%S %z
+        Time_Keep   Off
+    [PARSER]
+        Name        syslog
+        Format      regex
+        Regex       ^\<(?<pri>[0-9]+)\>(?<time>[^ ]* {1,2}[^ ]* [^ ]*) (?<host>[^ ]*) (?<ident>[a-zA-Z0-9_\/\.\-]*)(?:\[(?<pid>[0-9]+)\])?(?:[^\:]*\:)? *(?<message>.*)$
+        Time_Key    time
+        Time_Format %b %d %H:%M:%S
+    [PARSER]
+        Name        cri
+        Format      regex
+        Regex       ^(?<time>[^ ]+) (?<stream>stdout|stderr) (?<logtag>[^ ]*) (?<log>.*)$
+        Time_Key    time
+        Time_Format %Y-%m-%dT%H:%M:%S.%L%z
+    [PARSER]
+        Name docker
+        Format json
+        Time_Key time
+        Time_Format %Y-%m-%dT%H:%M:%S.%L
+        Time_Keep Off
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fluent-bit-vtlog
+  namespace: vtlog
+  labels:
+    app.kubernetes.io/name: fluent-bit-vtlog
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: fluent-bit-vtlog
+  template:
+    metadata:
+      name: fluent-bit-vtlog
+      labels:
+        app.kubernetes.io/name: fluent-bit-vtlog
+    spec:
+      priorityClassName: system-node-critical
+      serviceAccountName: fluent-bit-vtlog
+      terminationGracePeriodSeconds: 10
+      securityContext:
+        seccompProfile:
+          type: RuntimeDefault
+      containers:
+        - name: fluent-bit
+          image: fluent/fluent-bit:1.5
+          imagePullPolicy: Always
+          env:
+          - name: EVENT_HUB_CONNECTION_STRING
+            valueFrom:
+              secretKeyRef:
+                name: fluent-bit-vtlog-secret
+                key: EventHubConnectionString
+          ports:
+            - containerPort: 2020
+          resources:
+            limits:
+              cpu: 1000m
+              memory: 512Mi
+          volumeMounts:
+          - name: varlog
+            mountPath: /var/log
+
+          - name: varlibdockercontainers
+            mountPath: /var/lib/docker/containers
+            readOnly: true
+
+          - name: fluent-bit-vtlog-config
+            mountPath: /fluent-bit/etc/
+
+      volumes:
+        - name: varlog
+          hostPath:
+            path: /var/log
+
+        - name: varlibdockercontainers
+          hostPath:
+            path: /var/lib/docker/containers
+
+        - name: fluent-bit-vtlog-config
+          configMap:
+            name: fluent-bit-config
