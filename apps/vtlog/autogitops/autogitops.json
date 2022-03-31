@@ -1,8 +1,10 @@
 {
-    "name": "vtlog",
-    "namespace": "vtlog",
     "imageName": "ghcr.io/retaildevcrews/vtlog",
     "imageTag": "beta",
+    "name": "vtlog",
+    "namespace": "vtlog",
     "targetDir": "apps",
-    "targets": ["west"]
+    "targets": [
+        "all"
+    ]
 }
