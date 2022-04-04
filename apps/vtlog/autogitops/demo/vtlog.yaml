@@ -59,11 +59,8 @@ metadata:
   name: {{gitops.name}}
   namespace: {{gitops.namespace}}
 spec:
-  type: ClusterIP
+  type: NodePort
   ports:
     - port: 8080
-      targetPort: http
-      protocol: TCP
-      name: http
-  selector:
-    app: {{gitops.name}}
+      targetPort: 8080 
+      nodePort: 33000
