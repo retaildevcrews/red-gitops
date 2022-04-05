@@ -142,6 +142,7 @@ metadata:
   namespace: vtlog
   labels:
     app.kubernetes.io/name: fluent-bit-vtlog
+    deployTag: deploy-2022-04-04-16-10
 spec:
   replicas: 1
   selector:
