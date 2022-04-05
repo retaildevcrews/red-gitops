@@ -75,7 +75,6 @@ spec:
           - {{gitops.config.region}}
           - --log-format
           - Json
-
 ---
 apiVersion: v1
 kind: Service
