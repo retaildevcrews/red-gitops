@@ -1,6 +1,6 @@
 {
     "imageName": "ghcr.io/retaildevcrews/vtlog",
-    "imageTag": "beta",
+    "imageTag": "latest",
     "name": "vtlog",
     "namespace": "vtlog",
     "targetDir": "apps",
