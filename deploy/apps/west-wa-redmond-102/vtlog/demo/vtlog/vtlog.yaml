@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
         - name: app
-          image: ghcr.io/retaildevcrews/vtlog:beta
+          image: ghcr.io/retaildevcrews/vtlog:latest
           imagePullPolicy: Always
           args:
           - --region
@@ -35,13 +35,13 @@ spec:
           readinessProbe:
             initialDelaySeconds: 10
             httpGet:
-              path: /readyz
+              path: /tlog/readyz
               port: 8080
           livenessProbe:
             initialDelaySeconds: 60
             periodSeconds: 60
             httpGet:
-              path: /healthz
+              path: /tlog/healthz
               port: 8080
           resources:
             limits:
