@@ -1,0 +1,94 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: webv-tlog
+  namespace: webv
+  labels:
+    app.kubernetes.io/name: webv-tlog
+spec:
+  replicas: 1
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+       maxSurge: 1
+       maxUnavailable: 1
+  selector:
+    matchLabels:
+      app: webv-tlog
+  template:
+    metadata:
+      labels:
+        app: webv-tlog
+    spec:
+      containers:
+        - name: app
+          image: ghcr.io/cse-labs/webv-red:latest
+          imagePullPolicy: Always
+          ports:
+            - name: http
+              containerPort: 8080
+              protocol: TCP
+          livenessProbe:
+            httpGet:
+              path: /healthz
+              port: http
+            initialDelaySeconds: 5
+            failureThreshold: 10
+            periodSeconds: 60
+          startupProbe:
+            httpGet:
+              path: /readyz
+              port: http
+            initialDelaySeconds: 5
+            failureThreshold: 60
+            periodSeconds: 2
+          resources:
+            limits:
+              memory: "256Mi"
+              cpu: "500m"
+            requests:
+              memory: "128Mi"
+              cpu: "250m"
+          args:
+          - --sleep
+          - "5000"
+          - --run-loop
+          - --server
+          - https://central-tx-austin-101.cseretail.com
+          - https://central-tx-austin-102.cseretail.com
+          - https://central-mo-kc-101.cseretail.com
+          - https://central-mo-kc-102.cseretail.com
+          - https://east-ga-atlanta-101.cseretail.com
+          - https://east-ga-atlanta-102.cseretail.com
+          - https://east-nc-raleigh-101.cseretail.com
+          - https://east-nc-raleigh-102.cseretail.com
+          - https://west-wa-redmond-102.cseretail.com
+          - https://west-wa-seattle-101.cseretail.com
+          - https://west-wa-seattle-102.cseretail.com
+          - https://west-ca-sd-101.cseretail.com
+          - https://west-ca-sd-102.cseretail.com
+          - --files
+          - tlog-benchmark.json
+          - --zone
+          - corp-monitoring
+          - --region
+          - corp
+          - --log-format
+          - Json
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: webv-tlog
+  namespace: webv
+  labels:
+    app: webv-tlog
+spec:
+  type: ClusterIP
+  ports:
+    - port: 8080
+      targetPort: http
+      protocol: TCP
+      name: http
+  selector:
+    app: webv-tlog
