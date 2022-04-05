@@ -1,0 +1,6 @@
+{
+  "requests":
+  [
+    {"path":"/tlog/healthz","perfTarget":{"category":"Healthz"},"validation":{"contentType":"text/plain","notContains":["fail"]}}
+  ]
+}
