@@ -56,6 +56,17 @@ spec:
           - --server
           - https://central-tx-austin-101.cseretail.com
           - https://central-tx-austin-102.cseretail.com
+          - https://central-mo-kc-101.cseretail.com
+          - https://central-mo-kc-102.cseretail.com
+          - https://east-ga-atlanta-101.cseretail.com
+          - https://east-ga-atlanta-102.cseretail.com
+          - https://east-nc-raleigh-101.cseretail.com
+          - https://east-nc-raleigh-102.cseretail.com
+          - https://west-wa-redmond-102.cseretail.com
+          - https://west-wa-seattle-101.cseretail.com
+          - https://west-wa-seattle-102.cseretail.com
+          - https://west-ca-sd-101.cseretail.com
+          - https://west-ca-sd-102.cseretail.com
           - --files
           - tlog-benchmark.json
           - --zone
