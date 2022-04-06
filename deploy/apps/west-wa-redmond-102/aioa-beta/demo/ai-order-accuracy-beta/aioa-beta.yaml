@@ -27,7 +27,6 @@ spec:
           imagePullPolicy: Always
           args:
           - --in-memory
-          - --prometheus
           - --zone
           - west-wa-redmond
           - --region
