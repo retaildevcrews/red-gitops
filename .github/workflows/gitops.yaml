@@ -30,4 +30,3 @@ jobs:
         --rm \
         -v $(pwd):/ago \
         ghcr.io/bartr/autogitops:beta
-
