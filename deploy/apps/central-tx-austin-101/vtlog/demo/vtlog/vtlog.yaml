@@ -14,7 +14,6 @@ spec:
     metadata:
       labels:
         app: vtlog
-        deployTag: deploy-2022-04-05-19-42-08
     spec:
       containers:
         - name: app
