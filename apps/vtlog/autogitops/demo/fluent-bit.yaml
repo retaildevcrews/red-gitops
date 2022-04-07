@@ -142,7 +142,6 @@ metadata:
   namespace: {{gitops.namespace}}
   labels:
     app.kubernetes.io/name: fluent-bit-{{gitops.name}}
-    deployTag: deploy-2022-04-05-19:42:08
 spec:
   replicas: 1
   selector:
