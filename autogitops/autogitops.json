@@ -1,14 +1,3 @@
 {
-    "apps": [
-        "ai-order-accuracy",
-        "heartbeat",
-        "webv",
-        "prometheus",
-        "fluent-bit",
-        "vtlog"
-    ],
-    "appsDir": "apps",
-    "targets": [
-        "central"
-    ]
+    "appsDir": "apps"
 }
