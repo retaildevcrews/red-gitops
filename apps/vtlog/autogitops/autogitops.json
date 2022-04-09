@@ -4,5 +4,5 @@
     "name": "vtlog",
     "namespace": "vtlog",
     "targetDir": "apps",
-    "targets": [ "central", "east", "west" ]
+    "targets": [ "region:central", "region:east", "region:west" ]
 }

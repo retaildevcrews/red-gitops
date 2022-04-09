@@ -4,5 +4,5 @@
     "imageName": "prom/prometheus",
     "imageTag": "latest",
     "targetDir": "./apps",
-    "targets": [ "corp-monitoring" ]
+    "targets": [ "store:corp-monitoring" ]
 }

@@ -4,5 +4,5 @@
     "imageName": "grafana/fluent-bit-plugin-loki",
     "imageTag": "latest",
     "targetDir": "./apps",
-    "targets": ["corp-monitoring" ]
+    "targets": [ "store:corp-monitoring" ]
 }

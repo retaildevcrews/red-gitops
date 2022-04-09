@@ -5,8 +5,8 @@
     "namespace": "ai-order-accuracy",
     "targetDir": "./apps",
     "targets": [
-        "east-nc-raleigh",
-        "central-tx-austin",
-        "central"
+        "district:east-nc-raleigh",
+        "district:central-tx-austin",
+        "region:central"
     ]
 }
