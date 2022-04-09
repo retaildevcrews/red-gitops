@@ -4,5 +4,5 @@
     "imageName": "ghcr.io/cse-labs/webv-red",
     "imageTag": "latest",
     "targetDir": "apps",
-    "targets": [ "store:corp-monitoring" ]
+    "targets": [ "corp-monitoring" ]
 }
