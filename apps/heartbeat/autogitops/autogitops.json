@@ -3,6 +3,6 @@
     "namespace": "heartbeat",
     "imageName": "ghcr.io/cse-labs/heartbeat",
     "imageTag": "latest",
-    "targetDir": "./bootstrap",
+    "targetDir": "bootstrap",
     "targets": [ "all" ]
 }

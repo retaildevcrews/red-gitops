@@ -3,6 +3,6 @@
     "namespace": "webv",
     "imageName": "ghcr.io/cse-labs/webv-red",
     "imageTag": "latest",
-    "targetDir": "./apps",
+    "targetDir": "apps",
     "targets": [ "store:corp-monitoring" ]
 }

@@ -3,7 +3,7 @@
     "imageTag": "latest",
     "name": "ai-order-accuracy",
     "namespace": "ai-order-accuracy",
-    "targetDir": "./apps",
+    "targetDir": "apps",
     "targets": [
         "district:east-nc-raleigh",
         "district:central-tx-austin",

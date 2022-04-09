@@ -3,6 +3,6 @@
     "namespace": "prometheus",
     "imageName": "prom/prometheus",
     "imageTag": "latest",
-    "targetDir": "./apps",
+    "targetDir": "apps",
     "targets": [ "store:corp-monitoring" ]
 }
