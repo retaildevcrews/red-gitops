@@ -14,6 +14,7 @@ spec:
     metadata:
       labels:
         app: vtlog
+        version: v2204-11-19
     spec:
       containers:
         - name: app
