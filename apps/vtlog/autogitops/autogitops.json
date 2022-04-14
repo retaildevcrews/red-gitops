@@ -3,6 +3,7 @@
     "imageTag": "latest",
     "name": "vtlog",
     "namespace": "vtlog",
+    "version": "0.0.1-0414-0522",
     "targetDir": "apps",
     "targets": [ "region:central", "region:east", "region:west" ]
 }
