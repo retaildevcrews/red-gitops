@@ -65,15 +65,15 @@ data:
         Url               ${LOKI_URL}
         Match             kube.var.log.containers.webv*.*
         Labels            {job="webv-red"}
-        LabelKeys         StatusCode,Duration,Server
-        RemoveKeys        StatusCode,Duration,Server
+        LabelKeys         StatusCode,Server
+        RemoveKeys        StatusCode,Server
     [OUTPUT]
         Name              grafana-loki
         Url               ${LOKI_URL}
         Match             kube.var.log.containers.ai-order-accuracy*.*
         Labels            {job="aioa-red"}
-        LabelKeys         StatusCode,Duration,Category,CosmosName,stream
-        RemoveKeys        StatusCode,Duration,Category,CosmosName,stream
+        LabelKeys         StatusCode,Category,CosmosName,stream
+        RemoveKeys        StatusCode,Category,CosmosName,stream
   input-kubernetes.conf: |
     [INPUT]
         Name              tail
