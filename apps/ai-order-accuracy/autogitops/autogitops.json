@@ -5,7 +5,6 @@
     "namespace": "ai-order-accuracy",
     "targetDir": "apps",
     "targets": [
-        "district:central-tx-austin",
         "region:central"
     ]
 }
