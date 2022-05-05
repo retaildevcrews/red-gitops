@@ -5,6 +5,7 @@ metadata:
   namespace: aioa-beta
   labels:
     app.kubernetes.io/name: ai-order-accuracy-beta
+    deploy: depoly-22-05-05-19-11-30
 spec:
   replicas: 1
   strategy:
@@ -19,7 +20,6 @@ spec:
     metadata:
       labels:
         app: ai-order-accuracy-beta
-        deploy: deploy-22-03-02-04-32-26
     spec:
       containers:
         - name: app
@@ -39,6 +39,19 @@ spec:
             limits:
               cpu: 500m
               memory: 512Mi
+          readinessProbe:
+            initialDelaySeconds: 5
+            failureThreshold: 60
+            periodSeconds: 2
+            httpGet:
+              path: /readyz
+              port: 8080
+          livenessProbe:
+            initialDelaySeconds: 60
+            periodSeconds: 60
+            httpGet:
+              path: /healthz
+              port: 8080
 
 ---
 apiVersion: v1
