@@ -1,0 +1,8 @@
+{
+    "imageName": "ghcr.io/cse-labs/aioa",
+    "imageTag": "beta",
+    "name": "ai-order-accuracy-beta",
+    "namespace": "aioa-beta",
+    "targetDir": "apps",
+    "targets": [ "store:west-wa-redmond-102" ]
+}
