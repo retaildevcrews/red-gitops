@@ -11,19 +11,21 @@ export PATH="$PATH:$REPO_BASE/bin"
 
 mkdir -p "$HOME/.ssh"
 
-if [ "$PAT" != "" ]
+if [ "$GITHUB_TOKEN" != "" ]
 then
-    echo "$PAT" > "$HOME/.ssh/akdc.pat"
+    echo "$GITHUB_TOKEN" > "$HOME/.ssh/akdc.pat"
     chmod 600 "$HOME/.ssh/akdc.pat"
 fi
 
 # add shared ssh key
+# todo - change these to id_rsa* so flt env doesn't include
 if [ "$AKDC_ID_RSA" != "" ] && [ "$AKDC_ID_RSA_PUB" != "" ]
 then
     echo "$AKDC_ID_RSA" | base64 -d > "$HOME/.ssh/id_rsa"
     echo "$AKDC_ID_RSA_PUB" | base64 -d > "$HOME/.ssh/id_rsa.pub"
     chmod 600 "$HOME"/.ssh/id*
 
+    # todo - this isn't working
     flt az login
     echo -n "$(az keyvault secret show --vault-name kv-tld  --query 'value' -o tsv -n akdc-pat)" > "$HOME/.ssh/akdc.pat"
     echo -n "$(az keyvault secret show --vault-name kv-tld  --query 'value' -o tsv -n ssl-crt)" > "$HOME/.ssh/certs.pem"
