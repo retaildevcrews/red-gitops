@@ -1,6 +1,8 @@
 #!/bin/bash
 echo "$(date +'%Y-%m-%d %H:%M:%S')  patched" >> /home/akdc/status
 
+sudo sed -i "s~/cli/vm/bin~/gitops/vm/bin~" /etc/bash.bashrc
+
 # pull the latest docker images
 docker pull ghcr.io/cse-labs/webv-red:latest
 docker pull ghcr.io/cse-labs/webv-red:beta
