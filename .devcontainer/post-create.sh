@@ -25,12 +25,12 @@ then
     chmod 600 "$HOME"/.ssh/id*
 
     flt az login
-    echo -n "$(az keyvault secret show --vault-name kv-tld  --query 'value' -o tsv -n akdc-pat)" > $HOME/.ssh/akdc.pat
-    echo -n "$(az keyvault secret show --vault-name kv-tld  --query 'value' -o tsv -n ssl-crt)" > $HOME/.ssh/certs.pem
-    echo -n "$(az keyvault secret show --vault-name kv-tld  --query 'value' -o tsv -n ssl-key)" > $HOME/.ssh/certs.key
-    echo -n "$(az keyvault secret show --vault-name kv-tld  --query 'value' -o tsv -n fluent-bit-secret)" > $HOME/.ssh/fluent-bit.key
-    echo -n "$(az keyvault secret show --vault-name kv-tld  --query 'value' -o tsv -n prometheus-secret)" > $HOME/.ssh/prometheus.key
-    echo -n "$(az keyvault secret show --vault-name kv-tld  --query 'value' -o tsv -n event-hub-secret)" > $HOME/.ssh/event-hub.key
+    echo -n "$(az keyvault secret show --vault-name kv-tld  --query 'value' -o tsv -n akdc-pat)" > "$HOME/.ssh/akdc.pat"
+    echo -n "$(az keyvault secret show --vault-name kv-tld  --query 'value' -o tsv -n ssl-crt)" > "$HOME/.ssh/certs.pem"
+    echo -n "$(az keyvault secret show --vault-name kv-tld  --query 'value' -o tsv -n ssl-key)" > "$HOME/.ssh/certs.key"
+    echo -n "$(az keyvault secret show --vault-name kv-tld  --query 'value' -o tsv -n fluent-bit-secret)" > "$HOME/.ssh/fluent-bit.key"
+    echo -n "$(az keyvault secret show --vault-name kv-tld  --query 'value' -o tsv -n prometheus-secret)" > "$HOME/.ssh/prometheus.key"
+    echo -n "$(az keyvault secret show --vault-name kv-tld  --query 'value' -o tsv -n event-hub-secret)" > "$HOME/.ssh/event-hub.key"
 fi
 
 # update oh-my-zsh
