@@ -7,4 +7,3 @@ flux reconcile source git gitops 2&1> sync.log
 
 echo "$(tail -n1 sync.log)"
 
-rm -f sync.log
