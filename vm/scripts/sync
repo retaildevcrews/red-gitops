@@ -5,6 +5,6 @@ set -e
 # run flux reconcile
 flux reconcile source git gitops > sync.log
 
-echo "tail -n1 sync.log"
+echo "$(tail -n1 sync.log)"
 
 rm -f sync.log
