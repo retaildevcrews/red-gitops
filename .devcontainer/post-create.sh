@@ -7,6 +7,9 @@ echo "$(date +'%Y-%m-%d %H:%M:%S')    post-create start" >> "$HOME/status"
 
 export PATH="$PATH:$REPO_BASE/bin"
 
+# update oh-my-zsh
+git -C "$HOME/.oh-my-zsh" pull
+
 # secrets are not available during on-create
 
 mkdir -p "$HOME/.ssh"
@@ -18,11 +21,10 @@ then
 fi
 
 # add shared ssh key
-# todo - change these to id_rsa* so flt env doesn't include
-if [ "$AKDC_ID_RSA" != "" ] && [ "$AKDC_ID_RSA_PUB" != "" ]
+if [ "$ID_RSA" != "" ] && [ "$ID_RSA_PUB" != "" ]
 then
-    echo "$AKDC_ID_RSA" | base64 -d > "$HOME/.ssh/id_rsa"
-    echo "$AKDC_ID_RSA_PUB" | base64 -d > "$HOME/.ssh/id_rsa.pub"
+    echo "$ID_RSA" | base64 -d > "$HOME/.ssh/id_rsa"
+    echo "$ID_RSA_PUB" | base64 -d > "$HOME/.ssh/id_rsa.pub"
     chmod 600 "$HOME"/.ssh/id*
 
     # todo - this isn't working
@@ -34,9 +36,6 @@ then
     echo -n "$(az keyvault secret show --vault-name kv-tld  --query 'value' -o tsv -n prometheus-secret)" > "$HOME/.ssh/prometheus.key"
     echo -n "$(az keyvault secret show --vault-name kv-tld  --query 'value' -o tsv -n event-hub-secret)" > "$HOME/.ssh/event-hub.key"
 fi
-
-# update oh-my-zsh
-git -C "$HOME/.oh-my-zsh" pull
 
 echo "post-create complete"
 echo "$(date +'%Y-%m-%d %H:%M:%S')    post-create complete" >> "$HOME/status"
