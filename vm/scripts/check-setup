@@ -1,3 +1,0 @@
-#!/bin/bash
-
-echo "$(hostname) $(tail -n1 "$HOME/status")"
