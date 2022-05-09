@@ -9,6 +9,7 @@ export REPO_BASE=$PWD
 export AKDC_REPO=$GITHUB_REPOSITORY
 export AKDC_GITOPS=true
 export AKDC_SSL=cseretail.com
+export export AKDC_DNS_RG=tld
 
 export PATH="$PATH:$REPO_BASE/bin"
 export GOPATH="$HOME/go"
@@ -36,6 +37,7 @@ mkdir -p "$HOME/.oh-my-zsh/completions"
     echo "export AKDC_REPO=$AKDC_REPO"
     echo "export AKDC_GITOPS=$AKDC_GITOPS"
     echo "export AKDC_SSL=$AKDC_SSL"
+    echo "export AKDC_DNS=$AKDC_DNS"
 
     echo ""
     echo "if [ \"\$PAT\" != \"\" ]"
