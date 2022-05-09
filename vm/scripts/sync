@@ -3,7 +3,7 @@
 set -e
 
 # run flux reconcile
-flux reconcile source git gitops > sync.log
+flux reconcile source git gitops 2&1> sync.log
 
 echo "$(tail -n1 sync.log)"
 
