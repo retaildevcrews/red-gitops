@@ -5,7 +5,7 @@
 echo "post-create start"
 echo "$(date +'%Y-%m-%d %H:%M:%S')    post-create start" >> "$HOME/status"
 
-export PATH="$PATH:$REPO_BASE/bin"
+export PATH="$PATH:$PWD/bin"
 
 # update oh-my-zsh
 git -C "$HOME/.oh-my-zsh" pull
@@ -27,7 +27,7 @@ then
     echo "$ID_RSA_PUB" | base64 -d > "$HOME/.ssh/id_rsa.pub"
     chmod 600 "$HOME"/.ssh/id*
 
-    # todo - this isn't working
+    # get secrets from key vault
     flt az login
     echo -n "$(az keyvault secret show --vault-name kv-tld  --query 'value' -o tsv -n akdc-pat)" > "$HOME/.ssh/akdc.pat"
     echo -n "$(az keyvault secret show --vault-name kv-tld  --query 'value' -o tsv -n ssl-crt)" > "$HOME/.ssh/certs.pem"
