@@ -5,5 +5,5 @@ then
     echo "Error: /path is required"
     echo "usage: flt curl /path"
 else
-    echo "$(curl -s https://"$(hostname).cseretail.com$1")  $(hostname)"
+    echo "$(curl -s https://"$(hostname).cseretail.com$1")"
 fi
