@@ -5,7 +5,7 @@ metadata:
   namespace: aioa-beta
   labels:
     app.kubernetes.io/name: ai-order-accuracy-beta
-    deploy: depoly-22-05-23-14-21-32
+    deploy: depoly-22-05-23-19-13-32
 spec:
   replicas: 1
   strategy:
