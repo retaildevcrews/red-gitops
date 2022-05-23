@@ -6,6 +6,7 @@
     "targetDir": "apps",
     "targets": [
         "district:east-nc-raleigh",
-        "district:central-tx-austin"
+        "district:central-tx-austin",
+        "region:central"
     ]
 }
