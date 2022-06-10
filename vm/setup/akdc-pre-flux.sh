@@ -11,6 +11,7 @@ cd "$(dirname "${BASH_SOURCE[0]}")" || exit
 # this has to be installed before flux
 if [ -f "$HOME/.ssh/certs.pem" ]
 then
+    kubectl create secret tls ssl-cert  --key="$HOME/.ssh/certs.key" --cert="$HOME/.ssh/certs.pem"
     kubectl create secret generic ssl-cert -n istio-system --from-file="key=$HOME/.ssh/certs.key" --from-file="cert=$HOME/.ssh/certs.pem"
 fi
 

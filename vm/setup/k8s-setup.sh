@@ -37,7 +37,9 @@ kubectl wait pod -l k8s-app=kube-dns -n kube-system --for condition=ready --time
 
 # Install istio resources on cluster
 echo "$(date +'%Y-%m-%d %H:%M:%S')  installing istio resources" >> "$HOME/status"
-istioctl install --set profile=demo -y
+
+### todo - add istio
+#istioctl install --set profile=demo -y
 
 # setup Dapr and Radius
 if [ "$AKDC_DAPR" = "true" ]
