@@ -24,8 +24,10 @@ sed -i -e "s/{{akdc-pat}}/$AKDC_PAT/g" /home/akdc/registries.yaml
 k3d cluster create \
   --registry-use k3d-registry.localhost:5500 \
   --registry-config /home/akdc/registries.yaml \
-  --config ./k3d.yaml \
-  --k3s-server-arg '--no-deploy=traefik'
+  --config ./k3d.yaml
+
+### todo - change this to istio
+  # --k3s-server-arg '--no-deploy=traefik'
 
 # sleep to avoid timing issues
 sleep 5
