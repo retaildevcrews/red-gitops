@@ -1,4 +1,4 @@
-FROM ghcr.io/cse-labs/webvalidate:beta
+FROM ghcr.io/cse-labs/webvalidate:2.5.0
 
 # copy our json test files
 USER root
