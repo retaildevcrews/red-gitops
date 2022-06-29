@@ -1,0 +1,13 @@
+{
+  "requests":
+  [
+    {"path":"/version","perfTarget":{"category":"static"},"validation":{"contentType":"text/plain"}},
+    {"path":"/readyz","perfTarget":{"category":"healthz"},"validation":{"contentType":"text/plain","exactMatch":"ready"}},
+    {"path":"/healthz","perfTarget":{"category":"healthz"},"validation":{"contentType":"text/plain","notContains":["fail"]}},
+    {"path":"/","perfTarget":{"category":"static"},"validation":{"contentType":"text/html","contains":["<title>Dog's Rule</title>"]}},
+    {"path":"/css/app.css","perfTarget":{"category":"static"},"validation":{"contentType":"text/css","contains":["body {"]}},
+    {"path":"/api/votes","perfTarget":{"category":"api"},"validation":{"contentType":"text/plain","contains":["\"Cats\":", "\"Dogs\":"]}},
+    {"path":"/api/vote/dogs","perfTarget":{"category":"api"},"validation":{"contentType":"text/plain","contains":["\"Dogs\":"]}},
+    {"path":"/api/vote/cats","perfTarget":{"category":"api"},"validation":{"contentType":"text/plain","contains":["\"Cats\":"]}}
+  ]
+}
