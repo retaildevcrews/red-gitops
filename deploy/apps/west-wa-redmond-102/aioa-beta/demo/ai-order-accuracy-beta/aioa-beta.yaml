@@ -1,10 +1,11 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: ai-order-accuracy
-  namespace: ai-order-accuracy
+  name: ai-order-accuracy-beta
+  namespace: aioa-beta
   labels:
-    app.kubernetes.io/name: ai-order-accuracy
+    app.kubernetes.io/name: ai-order-accuracy-beta
+    deploy: depoly-22-07-06-19-01-15
 spec:
   replicas: 1
   strategy:
@@ -14,20 +15,20 @@ spec:
        maxUnavailable: 1
   selector:
     matchLabels:
-      app: ai-order-accuracy
+      app: ai-order-accuracy-beta
   template:
     metadata:
       labels:
-        app: ai-order-accuracy
+        app: ai-order-accuracy-beta
     spec:
       containers:
         - name: app
-          image: ghcr.io/cse-labs/pib-imdb:latest
+          image: ghcr.io/cse-labs/aioa:beta
           imagePullPolicy: Always
-          args: 
+          args:
           - --in-memory
           - --zone
-          - west-wa-seattle
+          - west-wa-redmond
           - --region
           - west
           ports:
@@ -56,8 +57,8 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: ai-order-accuracy
-  namespace: ai-order-accuracy
+  name: ai-order-accuracy-beta
+  namespace: aioa-beta
 spec:
   type: ClusterIP
   ports:
@@ -66,23 +67,23 @@ spec:
       protocol: TCP
       name: http
   selector:
-    app: ai-order-accuracy
-    
+    app: ai-order-accuracy-beta
+
 ---
 apiVersion: traefik.containo.us/v1alpha1
 kind: IngressRoute
 metadata:
-  name: ai-order-accuracy-https
+  name: ai-order-accuracy-beta-https
   namespace: default
 spec:
   entryPoints:
     - websecure
   routes:
-    - match: Host(`west-wa-seattle-101.cseretail.com`)
+    - match: Host(`west-wa-redmond-102.cseretail.com`)
       kind: Rule
       services:
-        - name: ai-order-accuracy
-          namespace: ai-order-accuracy
+        - name: ai-order-accuracy-beta
+          namespace: aioa-beta
           kind: Service
           port: 8080
   tls:
