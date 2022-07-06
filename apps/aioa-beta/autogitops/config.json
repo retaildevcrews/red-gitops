@@ -4,5 +4,5 @@
     "name": "ai-order-accuracy-beta",
     "namespace": "aioa-beta",
     "targetDir": "apps",
-    "targets": [  ]
+    "targets": [ "store:west-wa-redmond-102" ]
 }
