@@ -4,9 +4,9 @@
     "name": "ai-order-accuracy",
     "namespace": "ai-order-accuracy",
     "targetDir": "apps",
-    "targets": [ "all"
+    "targets": [ "all" ]
         // "district:east-nc-raleigh",
         // "district:central-tx-austin",
         // "region:central"
-    ]
+    // ]
 }
