@@ -27,7 +27,7 @@ spec:
           args: 
           - --in-memory
           - --zone
-          - east-nc-raleigh
+          - east-ga-atlanta
           - --region
           - east
           ports:
@@ -78,7 +78,7 @@ spec:
   entryPoints:
     - websecure
   routes:
-    - match: Host(`east-nc-raleigh-102.cseretail.com`)
+    - match: Host(`east-ga-atlanta-101.cseretail.com`)
       kind: Rule
       services:
         - name: ai-order-accuracy

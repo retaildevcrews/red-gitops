@@ -27,9 +27,9 @@ spec:
           args: 
           - --in-memory
           - --zone
-          - east-nc-raleigh
+          - west-wa-seattle
           - --region
-          - east
+          - west
           ports:
             - name: http
               containerPort: 8080
@@ -78,7 +78,7 @@ spec:
   entryPoints:
     - websecure
   routes:
-    - match: Host(`east-nc-raleigh-102.cseretail.com`)
+    - match: Host(`west-wa-seattle-102.cseretail.com`)
       kind: Rule
       services:
         - name: ai-order-accuracy

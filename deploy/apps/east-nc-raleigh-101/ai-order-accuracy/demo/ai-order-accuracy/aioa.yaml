@@ -22,7 +22,7 @@ spec:
     spec:
       containers:
         - name: app
-          image: ghcr.io/cse-labs/imdb-app:latest
+          image: ghcr.io/cse-labs/pib-imdb:latest
           imagePullPolicy: Always
           args: 
           - --in-memory
