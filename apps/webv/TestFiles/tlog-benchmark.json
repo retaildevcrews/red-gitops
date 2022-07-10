@@ -1,6 +1,0 @@
-{
-  "requests":
-  [
-    {"path":"/tlog/healthz","validation":{"contentType":"text/plain"}}
-  ]
-}
